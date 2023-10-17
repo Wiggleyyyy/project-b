@@ -9,6 +9,11 @@ framerate=60
 font=pygame.font.Font("freesansbold.ttf", 16) # ==== FONT IS TEMP ====
 timer = pygame.time.Clock()
 
+def draw_task(color, y_coord): # ==== COULD BE RENAMED ====
+    pygame.draw.circle(screen, color, (30, y_coord), 20, 5)
+    pygame.draw.rect(screen, color, [70, y_coord - 15, 200, 30])
+    pygame.draw.rect(screen, color, [75, y_coord -10, 190, 20])
+
 running=True
 while running:
     timer.tick(framerate)
@@ -17,6 +22,7 @@ while running:
             running=False
         
     screen.fill(background)
+    draw_task("#088F8F", 50)
     pygame.display.flip()
 
 pygame.quit()
