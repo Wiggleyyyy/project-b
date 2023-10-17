@@ -1,6 +1,8 @@
 import pygame
+import os
 pygame.init()
 
+pygame.display.set_icon(pygame.image.load('./images/pre-icon.png'))
 #temp color library
 background_color="#478778" #Lincoln Green
 task_color_odd="#2AAA8A" # Jungle Green
