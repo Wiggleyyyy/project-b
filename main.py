@@ -1,5 +1,5 @@
 import pygame
-import os
+
 pygame.init()
 
 pygame.display.set_icon(pygame.image.load('./images/pre-icon.png'))
@@ -11,7 +11,7 @@ task_color_even="#00A36C" # Jade
 game_title="PROJECT B | (INSERT VERSION OF GAME LATER)" # ==== TITLE NEEDS TO BE CHANGED ====
 screen=pygame.display.set_mode([500, 500], pygame.RESIZABLE) # I made the window smaller and resizable 
 pygame.display.set_caption(game_title)
-background=(background_color) # ==== BACKGROUND IS TEMP ====
+background=background_color # ==== BACKGROUND IS TEMP ====
 framerate=60
 font=pygame.font.Font("freesansbold.ttf", 16) # ==== FONT IS TEMP ====
 timer = pygame.time.Clock()
