@@ -1,0 +1,3 @@
+// MAKE SURE TO INSTALL THESE LIBRARIES //
+pip install sv-ttk
+pip install pillow
