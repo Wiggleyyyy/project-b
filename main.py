@@ -34,7 +34,7 @@ task2_speed=4
 task3_speed=3
 task4_speed=2
 task5_speed=1
-score=5000 # ==== SCORE(currency) IS TEMP ====
+score=0 # ==== SCORE(currency) IS TEMP ====
 
 #draw buttons function
 task1_cost=1
@@ -65,7 +65,7 @@ def draw_task(color, y_coord, value, draw, length, speed): # ==== COULD BE RENAM
     pygame.draw.rect(screen, color, [70, y_coord - 15, 200, 30]) # ==== FRAME ====
     pygame.draw.rect(screen, "#000000", [75, y_coord -10, 190, 20]) # ==== LOADER ====
     pygame.draw.rect(screen, color, [70, y_coord -15, length, 30])
-    value_text=font.render(str(value), True, colorlibrary.task_text_color) # ==== TEXT IS TEMP | SHOULD BE REPLACED WITH AN IMAGE LATER ====
+    value_text=font.render(str(round(value,2)), True, colorlibrary.task_text_color) # ==== TEXT IS TEMP | SHOULD BE REPLACED WITH AN IMAGE LATER ====
     screen.blit(value_text, (25, y_coord -8)) # ==== TEXT IS TEMP | SHOULD BE REPLACED WITH AN IMAGE LATER ====
     return task, length, draw
 
@@ -123,6 +123,26 @@ while running:
             if task5_manager_buy.collidepoint(event.pos) and score >= task5_manager_cost and not task5_owned:
                 task5_owned=True
                 score -= task5_manager_cost
+            if task1_buy.collidepoint(event.pos) and score >= task1_cost:
+                task1_value+=.15
+                score -= task1_cost
+                task1_cost+=1
+            if task2_buy.collidepoint(event.pos) and score >= task2_cost:
+                task2_value+=.3
+                score -= task2_cost
+                task2_cost+=2
+            if task3_buy.collidepoint(event.pos) and score >= task3_cost:
+                task3_value+=.6
+                score -= task3_cost
+                task3_cost+=3
+            if task4_buy.collidepoint(event.pos) and score >= task4_cost:
+                task4_value+=1.2
+                score -= task4_cost
+                task4_cost+=4
+            if task5_buy.collidepoint(event.pos) and score >= task5_cost:
+                task5_value+=2.4
+                score -= task5_cost
+                task5_cost+=5    
                       
         elif event.type == pygame.MOUSEBUTTONUP:
             click.clicked(pygame.mouse.get_pos()) # clicking event
