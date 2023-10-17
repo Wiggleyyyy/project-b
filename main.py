@@ -6,6 +6,7 @@ pygame.display.set_icon(pygame.image.load('./images/pre-icon.png')) # Sets game 
 
 #temp color library
 background_color="#478778" #Lincoln Green
+background_secondary_color="#5F8575" #Eucalyptus
 task_color_odd="#2AAA8A" # Jungle Green
 task_color_even="#00A36C" # Jade
 task_text_color="#355E3B" # Hunter Green
@@ -84,6 +85,9 @@ while running:
     task3, task3_length, draw_task3 = draw_task(task_color_odd, 150, task3_value, draw_task3, task3_length, task3_speed)
     task4, task4_length, draw_task4 = draw_task(task_color_even, 200, task4_value, draw_task4, task4_length, task4_speed)
     task5, task5_length, draw_task5 = draw_task(task_color_odd, 250, task5_value, draw_task5, task5_length, task5_speed)
+    
+    display_score = font.render("Money: $"+str(round(score, 2)), True, "#ffffff", "#000000") # ==== REPLACE "Money" WITH CURRENCY NAME | MAYBE REPLACE $ WITH CURRENCY IMAGE ====
+    screen.blit(display_score, (10,5))
     pygame.display.flip()
 
 pygame.quit()
