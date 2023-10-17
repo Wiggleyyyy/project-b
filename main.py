@@ -34,7 +34,7 @@ task2_speed=4
 task3_speed=3
 task4_speed=2
 task5_speed=1
-score=0 # ==== SCORE(currency) IS TEMP ====
+score=5000 # ==== SCORE(currency) IS TEMP ====
 
 #draw buttons function
 task1_cost=1
@@ -77,11 +77,23 @@ def draw_buttons(color, x_coord, cost, owned, manager_cost):
         manager_button = pygame.draw.rect(screen, color, [x_coord, 405, 50, 30])
         manager_text = font.render(str(round(manager_cost, 2)), True, "#000000")
         screen.blit(manager_text, (x_coord + 6, 410))
+    else:
+        manager_button = pygame.draw.rect(screen, "#000000", [x_coord, 405, 50, 30])
     return task_button, manager_button
 
 running=True
 while running:
     timer.tick(framerate)
+    if task1_owned and not draw_task1:
+        draw_task1=True
+    if task2_owned and not draw_task2:
+        draw_task2=True
+    if task3_owned and not draw_task3:
+        draw_task3=True
+    if task4_owned and not draw_task4:
+        draw_task4=True
+    if task5_owned and not draw_task5:
+        draw_task5=True
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running=False
@@ -96,11 +108,27 @@ while running:
                 draw_task4 = True
             if task5.collidepoint(event.pos):
                 draw_task5 = True
+            if task1_manager_buy.collidepoint(event.pos) and score >= task1_manager_cost and not task1_owned:
+                task1_owned=True
+                score -= task1_manager_cost
+            if task2_manager_buy.collidepoint(event.pos) and score >= task2_manager_cost and not task2_owned:
+                task2_owned=True
+                score -= task2_manager_cost
+            if task3_manager_buy.collidepoint(event.pos) and score >= task3_manager_cost and not task3_owned:
+                task3_owned=True
+                score -= task3_manager_cost
+            if task4_manager_buy.collidepoint(event.pos) and score >= task4_manager_cost and not task4_owned:
+                task4_owned=True
+                score -= task4_manager_cost
+            if task5_manager_buy.collidepoint(event.pos) and score >= task5_manager_cost and not task5_owned:
+                task5_owned=True
+                score -= task5_manager_cost
                       
         elif event.type == pygame.MOUSEBUTTONUP:
             click.clicked(pygame.mouse.get_pos()) # clicking event
         
     screen.fill(background)
+    
     task1, task1_length, draw_task1 = draw_task(colorlibrary.task_color_odd, 50, task1_value, draw_task1, task1_length, task1_speed)
     task2, task2_length, draw_task2 = draw_task(colorlibrary.task_color_even, 100, task2_value, draw_task2, task2_length, task2_speed)
     task3, task3_length, draw_task3 = draw_task(colorlibrary.task_color_odd, 150, task3_value, draw_task3, task3_length, task3_speed)
@@ -111,7 +139,7 @@ while running:
     task1_buy, task1_manager_buy = draw_buttons(colorlibrary.button_color_odd, 10, task1_cost, task1_owned, task1_manager_cost)
     task2_buy, task2_manager_buy = draw_buttons(colorlibrary.button_color_even, 70, task2_cost, task2_owned, task2_manager_cost)
     task3_buy, task3_manager_buy = draw_buttons(colorlibrary.button_color_odd, 130, task3_cost, task3_owned, task3_manager_cost)
-    task4_buy, task4_manager_buy = draw_buttons(colorlibrary.button_color_even, 190, task4_cost, task1_owned, task4_manager_cost)
+    task4_buy, task4_manager_buy = draw_buttons(colorlibrary.button_color_even, 190, task4_cost, task4_owned, task4_manager_cost)
     task5_buy, task5_manager_buy = draw_buttons(colorlibrary.button_color_odd, 250, task5_cost, task5_owned, task5_manager_cost)
     
     display_score = font.render("Money: $"+str(round(score, 2)), True, "#ffffff", "#000000") # ==== REPLACE "Money" WITH CURRENCY NAME | MAYBE REPLACE $ WITH CURRENCY IMAGE ====
