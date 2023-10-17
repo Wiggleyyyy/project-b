@@ -1,4 +1,5 @@
 import pygame
+from events import click
 
 pygame.init()
 
@@ -28,7 +29,7 @@ while running:
         if event.type == pygame.QUIT:
             running=False
         elif event.type == pygame.MOUSEBUTTONUP:
-            print(pygame.mouse.get_pos())
+            click.clicked(pygame.mouse.get_pos()) # clicking event
         
     screen.fill(background)
     draw_task_1(task_color_odd, 50)
