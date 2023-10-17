@@ -1,6 +1,5 @@
 import pygame
 from events import click
-
 pygame.init()
 
 pygame.display.set_icon(pygame.image.load('./images/pre-icon.png')) # Sets game logo
@@ -64,6 +63,18 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running=False
+        if event.type == pygame.MOUSEBUTTONDOWN: # ==== CLICKING TASKS ====
+            if task1.collidepoint(event.pos):
+                draw_task1 = True
+            if task2.collidepoint(event.pos):
+                draw_task2 = True
+            if task3.collidepoint(event.pos):
+                draw_task3 = True
+            if task4.collidepoint(event.pos):
+                draw_task4 = True
+            if task5.collidepoint(event.pos):
+                draw_task5 = True
+                      
         elif event.type == pygame.MOUSEBUTTONUP:
             click.clicked(pygame.mouse.get_pos()) # clicking event
         
