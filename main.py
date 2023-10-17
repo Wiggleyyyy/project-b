@@ -81,7 +81,7 @@ while running:
     task5, task5_length, draw_task5 = draw_task(colorlibrary.task_color_odd, 250, task5_value, draw_task5, task5_length, task5_speed)
     
     display_score = font.render("Money: $"+str(round(score, 2)), True, "#ffffff", "#000000") # ==== REPLACE "Money" WITH CURRENCY NAME | MAYBE REPLACE $ WITH CURRENCY IMAGE ====
-    screen.blit(display_score, (10,5))
+    screen.blit(display_score, (400,5))
     pygame.display.flip()
 
 pygame.quit()
