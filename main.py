@@ -2,7 +2,7 @@ import pygame
 pygame.init()
 
 game_title="PROJECT B | (INSERT VERSION OF GAME LATER)" # ==== TITLE NEEDS TO BE CHANGED ====
-screen=pygame.display.set_mode([1920, 1080])
+screen=pygame.display.set_mode([500, 500], pygame.RESIZABLE) # I made the window smaller and resizable 
 pygame.display.set_caption(game_title)
 background=("#000000") # ==== BACKGROUND IS TEMP ====
 framerate=60
