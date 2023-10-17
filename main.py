@@ -36,6 +36,23 @@ task4_speed=2
 task5_speed=1
 score=0 # ==== SCORE(currency) IS TEMP ====
 
+#draw buttons function
+task1_cost=1
+task1_owned=False
+task1_manager_cost=100
+task2_cost=2
+task2_owned=False
+task2_manager_cost=500
+task3_cost=3
+task3_owned=False
+task3_manager_cost=1000
+task4_cost=4
+task4_owned=False
+task4_manager_cost=1500
+task5_cost=5
+task5_owned=False
+task5_manager_cost=2000
+
 def draw_task(color, y_coord, value, draw, length, speed): # ==== COULD BE RENAMED ====
     global score
     if draw and length < 200:
@@ -51,6 +68,16 @@ def draw_task(color, y_coord, value, draw, length, speed): # ==== COULD BE RENAM
     value_text=font.render(str(value), True, colorlibrary.task_text_color) # ==== TEXT IS TEMP | SHOULD BE REPLACED WITH AN IMAGE LATER ====
     screen.blit(value_text, (25, y_coord -8)) # ==== TEXT IS TEMP | SHOULD BE REPLACED WITH AN IMAGE LATER ====
     return task, length, draw
+
+def draw_buttons(color, x_coord, cost, owned, manager_cost):
+    task_button = pygame.draw.rect(screen, color, [x_coord, 340, 50, 30])
+    task_cost = font.render(str(round(cost, 2)), True, "#000000")
+    screen.blit(task_cost, (x_coord + 6, 350))
+    if not owned:
+        manager_button = pygame.draw.rect(screen, color, [x_coord, 405, 50, 30])
+        manager_text = font.render(str(round(manager_cost, 2)), True, "#000000")
+        screen.blit(manager_text, (x_coord + 6, 410))
+    return task_button, manager_button
 
 running=True
 while running:
@@ -80,8 +107,19 @@ while running:
     task4, task4_length, draw_task4 = draw_task(colorlibrary.task_color_even, 200, task4_value, draw_task4, task4_length, task4_speed)
     task5, task5_length, draw_task5 = draw_task(colorlibrary.task_color_odd, 250, task5_value, draw_task5, task5_length, task5_speed)
     
+    # ==== BUY BUTTONS ARE TEMP | WILL ADD BUT MENU LATER ====
+    task1_buy, task1_manager_buy = draw_buttons(colorlibrary.button_color_odd, 10, task1_cost, task1_owned, task1_manager_cost)
+    task2_buy, task2_manager_buy = draw_buttons(colorlibrary.button_color_even, 70, task2_cost, task2_owned, task2_manager_cost)
+    task3_buy, task3_manager_buy = draw_buttons(colorlibrary.button_color_odd, 130, task3_cost, task3_owned, task3_manager_cost)
+    task4_buy, task4_manager_buy = draw_buttons(colorlibrary.button_color_even, 190, task4_cost, task1_owned, task4_manager_cost)
+    task5_buy, task5_manager_buy = draw_buttons(colorlibrary.button_color_odd, 250, task5_cost, task5_owned, task5_manager_cost)
+    
     display_score = font.render("Money: $"+str(round(score, 2)), True, "#ffffff", "#000000") # ==== REPLACE "Money" WITH CURRENCY NAME | MAYBE REPLACE $ WITH CURRENCY IMAGE ====
     screen.blit(display_score, (400,5))
+    buy_more=font.render("Buy more: ", True, "#ffffff")
+    screen.blit(buy_more, (10, 315))
+    buy_managers=font.render("Buy managers: ", True, "#ffffff")
+    screen.blit(buy_managers, (10, 380))
     pygame.display.flip()
 
 pygame.quit()
