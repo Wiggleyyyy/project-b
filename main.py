@@ -97,7 +97,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running=False
-        if event.type == pygame.MOUSEBUTTONDOWN: # ==== CLICKING TASKS ====
+        if event.type == pygame.MOUSEBUTTONDOWN: # ==== CLICKING TASKS && BUYING TASKS ====
             if task1.collidepoint(event.pos):
                 draw_task1 = True
             if task2.collidepoint(event.pos):
@@ -149,6 +149,7 @@ while running:
         
     screen.fill(background)
     
+    # ==== DRAWING TASKS ====
     task1, task1_length, draw_task1 = draw_task(colorlibrary.task_color_odd, 50, task1_value, draw_task1, task1_length, task1_speed)
     task2, task2_length, draw_task2 = draw_task(colorlibrary.task_color_even, 100, task2_value, draw_task2, task2_length, task2_speed)
     task3, task3_length, draw_task3 = draw_task(colorlibrary.task_color_odd, 150, task3_value, draw_task3, task3_length, task3_speed)
