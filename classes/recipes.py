@@ -1,4 +1,4 @@
-from utils import list_contained
+from utils import list_contained, array_removal
 
 class Dessert:
     def __init__(self, ingredients, sell_price, icon): # these ingredients refer to the ones needed to bake
@@ -9,7 +9,8 @@ class Dessert:
 
     def prepare(self, ingredients_list): # function to prepare the recipe
        if list_contained.first_contains_second(ingredients_list, self.ingredients): # ingredients_list refers to the ingredients the user has
+          
           self.amount = self.amount + 1
-          return True # if you have the right ingredients it returns true
+          return array_removal.remove_array(ingredients_list, self.ingredients) # returns your new ingredients list
        else: return False
       

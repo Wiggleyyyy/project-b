@@ -7,7 +7,7 @@ class Ingredient:
 
     def buy(self, ingredients_list, money): #stil have to figure out how to do ingredients_list
         if money < self.price: return False
-        else: return money - self.price
+        else: return money - self.price, ingredients_list
 
 
 
