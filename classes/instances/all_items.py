@@ -6,7 +6,7 @@ all_ingredients_available = [
     ingredients.Ingredient(300, 1, "icon"), # sugar
     ingredients.Ingredient(200, 2, "icon"), # egg pack
     ingredients.Ingredient(350, 3, "icon"), # chocolate 
-    ingredients.Ingredient(200, 4, "icon"), # flour 
+    ingredients.Ingredient(200, 4, "icon"), # vanilla
     ingredients.Ingredient(50, 5, "icon"), # baking powder 
     ingredients.Ingredient(600, 6, "icon"), # honey 
     ingredients.Ingredient(400, 7, "icon"), # heavy cream 
