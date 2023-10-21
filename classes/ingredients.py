@@ -1,10 +1,10 @@
 import numpy as np
 
 class Ingredient:
-    def __init__(self, price, type, icon): # to identify the ingredient 
+    def __init__(self, price, name, icon): # to identify the ingredient 
         self.price = price # its price
         self.sell_price = (price / 2) # the money you get back if you want to sell it
-        self.type = type
+        self.name = name
         self.icon = icon
 
     def buy(self, ingredients_list, money): #stil have to figure out how to do ingredients_list
