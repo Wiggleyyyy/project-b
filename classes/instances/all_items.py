@@ -14,5 +14,5 @@ all_ingredients_available = [
     ]
 
 all_recipes_available = [
-    recipes.Dessert([0, 8], 30) # bread, as you can see, the ingredients required to bake bread are water and flour (8 and 0)
+    recipes.Dessert([0, 8], 30, "icon") # bread, as you can see, the ingredients required to bake bread are water and flour (8 and 0)
 ]
